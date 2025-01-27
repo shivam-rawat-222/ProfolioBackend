@@ -7,6 +7,7 @@ const { AboutRouter } = require("./Router/AboutRouter");
 const { expertiseRouter } = require("./Router/ExpertiseRouter");
 const { ExperienceRouter } = require("./Router/ExperienceRouter");
 const { ResumeRouter } = require("./Router/Resume");
+const { AllProjectRouter } = require("./Router/AllProjectRouter");
 
 
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use("/api/v1/about", AboutRouter);
 app.use("/api/v1/expertise", expertiseRouter);
 app.use("/api/v1/experience", ExperienceRouter);
 app.use("/api/v1/Resume", ResumeRouter);
+app.use("/api/v1/allProjects",AllProjectRouter);
 
 connectDB().then(() => {
     console.log("database connected")
