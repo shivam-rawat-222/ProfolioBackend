@@ -1,25 +1,31 @@
 const mongoose = require("mongoose");
 const ExperienceSchema = new mongoose.Schema(
     {
-        Profile:{
-            type:String,
-            require:true,
+        Profile: {
+            type: String,
+            require: true,
         },
-        Company:{
-            type:String,
+        Company: {
+            type: String,
+            require: true
+        },
+        FromDate: {
+            type: Date,
+            require: true
+        },
+        ToDate: {
+            type: Date,
+           
+        },
+        Present: {
+            type: Boolean,
             require:true
         },
-        FromDate:{
-            type:Date,
+        description: {
+            type: String,
             require:true
-        },
-        ToDate:{
-            type:Date,
-        },
-        Present:{
-            type:Boolean,
         }
     }
 )
-const ExperienceModel = mongoose.model("Experience",ExperienceSchema);
-module.exports = {ExperienceModel}
+const ExperienceModel = mongoose.model("Experience", ExperienceSchema);
+module.exports = { ExperienceModel }
