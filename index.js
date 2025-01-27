@@ -1,23 +1,25 @@
 const express = require("express");
 const app = express();
 const ENVVAR = require('dotenv').config();
-const {connectDB} = require('./DatabaseConnect')
-const {AboutModel} = require("./Models/About");
+const { connectDB } = require('./DatabaseConnect')
+const { AboutModel } = require("./Models/About");
 const { AboutRouter } = require("./Router/AboutRouter");
 const { expertiseRouter } = require("./Router/ExpertiseRouter");
 const { ExperienceRouter } = require("./Router/ExperienceRouter");
+const { ResumeRouter } = require("./Router/Resume");
 const { AllProjectRouter } = require("./Router/AllProjectRouter");
 
 
 app.use(express.json());
-app.use("/api/v1/about",AboutRouter);
-app.use("/api/v1/expertise",expertiseRouter);
-app.use("/api/v1/experience",ExperienceRouter);
+app.use("/api/v1/about", AboutRouter);
+app.use("/api/v1/expertise", expertiseRouter);
+app.use("/api/v1/experience", ExperienceRouter);
+app.use("/api/v1/Resume", ResumeRouter);
 app.use("/api/v1/allProjects",AllProjectRouter);
 
-connectDB().then(()=>{
+connectDB().then(() => {
     console.log("database connected")
-}).catch((err)=>{
+}).catch((err) => {
     console.log(err);
 })
 
