@@ -13,7 +13,6 @@ const { mailRouter } = require("./Router/SendMail")
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-// Swagger configuration
 const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
@@ -24,8 +23,10 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${process.env.PORT || 3000}`,
-                description: 'Local server',
+                url: process.env.VERCEL_URL
+                    ? `https://${process.env.VERCEL_URL}` // Vercel production URL
+                    : `http://localhost:${process.env.PORT || 3000}`, // Local development URL
+                description: process.env.VERCEL_URL ? 'Production server (Vercel)' : 'Local server',
             },
         ],
     },
