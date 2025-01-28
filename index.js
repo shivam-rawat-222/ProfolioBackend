@@ -23,9 +23,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: process.env.VERCEL_URL
-                    ? `https://${process.env.VERCEL_URL}` // Vercel production URL
-                    : `http://localhost:${process.env.PORT || 3000}`, // Local development URL
+                url: "https://shivamrawat-profolio-backend.vercel.app", // Local development URL
                 description: process.env.VERCEL_URL ? 'Production server (Vercel)' : 'Local server',
             },
         ],
