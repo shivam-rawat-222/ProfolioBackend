@@ -2,9 +2,7 @@ const express = require("express");
 const ResumeRouter = express.Router();
 const multer = require("multer");
 const path = require("path");
-const { LocalStorage } = require("node-localstorage");
 
-let localStorage = new LocalStorage("ResumeName");
 let multerfile;
 
 try {
@@ -13,7 +11,6 @@ try {
             cb(null, "./uploads");
         },
         filename: (req, file, cb) => {
-            localStorage.setItem("latestFile", file.originalname);
             cb(null, file.originalname);
         }
     });
@@ -98,13 +95,12 @@ ResumeRouter.post("/upload", upload.single('file'), (req, res) => {
  *         description: File not found
  */
 ResumeRouter.get("/download", (req, res) => {
-    let filename = localStorage.getItem("latestFile");
     if (!filename) {
         return res.status(404).json({
             message: "No file found"
         });
     }
-    res.download(path.join(__dirname, `../uploads/${filename}`));
+    res.download(path.join(__dirname, `../uploads/ShivamResume_v1.pdf`));
 });
 
 module.exports = {
