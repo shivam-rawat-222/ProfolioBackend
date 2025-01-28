@@ -9,10 +9,12 @@ const { ExperienceRouter } = require("./Router/ExperienceRouter");
 const { ResumeRouter } = require("./Router/Resume");
 const { AllProjectRouter } = require("./Router/AllProjectRouter");
 const path = require("path");
-
+const cors = require('cors');
 const { mailRouter } = require("./Router/SendMail")
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+
+app.use(cors());
 
 // Swagger configuration
 const swaggerOptions = {
@@ -25,8 +27,10 @@ const swaggerOptions = {
         },
         servers: [
             {
+
                 url: `http://localhost:${process.env.PORT || 3000}`,
                 description: 'Local server',
+
             },
         ],
     },
