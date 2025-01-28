@@ -34,6 +34,10 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.get('/api-docs.json', (req, res) => {
+    res.send(swaggerDocs)
+});
 app.use(express.json());
 app.use("/api/v1/about", AboutRouter);
 app.use("/api/v1/expertise", expertiseRouter);
@@ -56,5 +60,7 @@ app.listen(process.env.PORT, (err) => {
     if (err) { console.log(err) }
     else {
         console.log("server started", process.env.PORT)
+        console.log(`http://localhost:${process.env.PORT}/api-docs`)
+        console.log("For API JSON Docs " + " " + `http://localhost:${process.env.PORT}/api-docs.json`)
     }
 })
