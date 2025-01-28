@@ -2,8 +2,10 @@ const express = require("express");
 const ResumeRouter = express.Router();
 const multer = require("multer")
 const path = require("path");
+const {LocalStorage} = require("node-localstorage");
+
+let localStorage = new LocalStorage("ResumeName")
 let multerfile;
-let filename;
 try {
     multerfile = multer.diskStorage({
         destination: (req, file, cb) => {
@@ -11,7 +13,7 @@ try {
 
         },
         filename: (req, file, cb) => {
-            filename = file.originalname
+            localStorage.setItem("latestFile",file.originalname)
             cb(null, file.originalname);
         }
     })
@@ -29,6 +31,7 @@ ResumeRouter.post("/upload", upload.single('file'), (req, res) => {
 })
 
 ResumeRouter.get("/download", (req, res) => {
+    let filename = localStorage.getItem("latestFile")
     res.download(path.join(__dirname, `.././uploads/${filename}`))
 })
 
