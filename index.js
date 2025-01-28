@@ -8,6 +8,7 @@ const { expertiseRouter } = require("./Router/ExpertiseRouter");
 const { ExperienceRouter } = require("./Router/ExperienceRouter");
 const { ResumeRouter } = require("./Router/Resume");
 const { AllProjectRouter } = require("./Router/AllProjectRouter");
+const path = require("path");
 
 const { mailRouter } = require("./Router/SendMail")
 const swaggerJsDoc = require('swagger-jsdoc');
