@@ -20,8 +20,10 @@ const { AllProjects, AllProjectModel } = require("../Models/AllProjects");
  *       200:
  *         description: Sends a simple "Sent" message
  */
-AllProjectRouter.get("/allProjects", (req, res) => {
-    res.send("Sent");
+AllProjectRouter.get("/allProjects", async (req, res) => {
+    let allProjectsData = await AllProjectModel.find({});
+    if(!allProjectsData) {throw new Error ("No Project Found")}
+    return res.json(allProjectsData);
 });
 
 /**
