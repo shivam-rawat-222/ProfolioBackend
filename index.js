@@ -65,7 +65,7 @@ app.get('/api-docs.json', (req, res) => {
 });
 
 // Routes
-app.use(tokenAuth); // Apply token authentication middleware globally
+// app.use(tokenAuth); 
 app.use("/api/v1/about", AboutRouter);
 app.use("/api/v1/expertise", expertiseRouter);
 app.use("/api/v1/experience", ExperienceRouter);
