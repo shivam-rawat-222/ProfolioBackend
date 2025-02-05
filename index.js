@@ -51,17 +51,19 @@ const swaggerOptions = {
 
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/swagger-ui', express.static(path.join(__dirname, 'node_modules', 'swagger-ui-dist')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get('/api-docs.json', (req, res) => {
   res.send(swaggerDocs)
 });
+
 app.use(express.json());
-app.use(tokenAuth);
+// app.use(tokenAuth);
 app.use("/api/v1/about", AboutRouter);
-app.use("/api/v1/expertise", expertiseRouter);
-app.use("/api/v1/experience", ExperienceRouter);
-app.use("/api/v1/allProjects", AllProjectRouter);
+// app.use("/api/v1/expertise", expertiseRouter);
+// app.use("/api/v1/experience", ExperienceRouter);
+// app.use("/api/v1/allProjects", AllProjectRouter);
 // app.use("/api/v1/Connect", mailRouter);
 // app.use("/api/v1/Token", TokenRouter);
 
