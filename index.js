@@ -61,11 +61,11 @@ app.get('/api-docs.json', (req, res) => {
 app.use(express.json());
 // app.use(tokenAuth);
 app.use("/api/v1/about", AboutRouter);
-// app.use("/api/v1/expertise", expertiseRouter);
-// app.use("/api/v1/experience", ExperienceRouter);
-// app.use("/api/v1/allProjects", AllProjectRouter);
-// app.use("/api/v1/Connect", mailRouter);
-// app.use("/api/v1/Token", TokenRouter);
+app.use("/api/v1/expertise", expertiseRouter);
+app.use("/api/v1/experience", ExperienceRouter);
+app.use("/api/v1/allProjects", AllProjectRouter);
+app.use("/api/v1/Connect", mailRouter);
+app.use("/api/v1/Token", TokenRouter);
 
 connectDB().then(() => {
   console.log("database connected")
