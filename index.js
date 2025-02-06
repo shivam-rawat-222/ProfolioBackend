@@ -11,6 +11,8 @@ const cors = require('cors');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const { tokenAuth } = require("./Middlewares/Authorization");
+const { mailRouter } = require("./Router/SendMail");
+const { TokenRouter } = require("./Router/TokenRouter");
 
 app.use(cors());
 
