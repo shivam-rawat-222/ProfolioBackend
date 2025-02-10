@@ -14,6 +14,8 @@ const { tokenAuth } = require("./Middlewares/Authorization");
 const { mailRouter } = require("./Router/SendMail");
 const { TokenRouter } = require("./Router/TokenRouter");
 
+const { EducationRouter } = require("./Router/EducationRouter");
+const {AllCertificatesRouter}  = require("./Router/AllCertificates")
 app.use(cors());
 
 // Swagger configuration
