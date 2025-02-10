@@ -15,7 +15,8 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const { TokenRouter } = require("./Router/TokenRouter");
 const { tokenAuth } = require("./Middlewares/Authorization");
-
+const { EducationRouter } = require("./Router/EducationRouter");
+const {AllCertificatesRouter}  = require("./Router/AllCertificates")
 app.use(cors());
 
 // Swagger configuration
@@ -54,21 +55,22 @@ const swaggerOptions = {
   };
   
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-app.get('/api-docs.json', (req, res) => {
+  const swaggerDocs = swaggerJsDoc(swaggerOptions);
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+  
+  app.get('/api-docs.json', (req, res) => {
     res.send(swaggerDocs)
-});
-app.use(express.json());
-app.use(tokenAuth);
-app.use("/api/v1/about", AboutRouter);
-app.use("/api/v1/expertise", expertiseRouter);
-app.use("/api/v1/experience", ExperienceRouter);
-app.use("/api/v1/Resume", ResumeRouter);
-app.use("/api/v1/allProjects", AllProjectRouter);
-app.use("/api/v1/Connect", mailRouter);
-app.use("/api/v1/Token", TokenRouter);
+  });
+  app.use(express.json());
+  app.use("/api/v1/Token", TokenRouter);
+app.use("/api/v1/about",tokenAuth, AboutRouter);
+app.use("/api/v1/expertise",tokenAuth, expertiseRouter);
+app.use("/api/v1/experience",tokenAuth, ExperienceRouter);
+app.use("/api/v1/Resume",tokenAuth, ResumeRouter);
+app.use("/api/v1/allProjects",tokenAuth, AllProjectRouter);
+app.use("/api/v1/Connect", tokenAuth,mailRouter);
+app.use("/api/v1/education",tokenAuth, EducationRouter);
+app.use("/api/v1/certificates",tokenAuth, AllCertificatesRouter);
 
 connectDB().then(() => {
     console.log("database connected")
