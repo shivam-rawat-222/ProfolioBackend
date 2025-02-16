@@ -4,28 +4,6 @@ const { ExperienceModel } = require("../Models/Experience");
 
 /**
  * @swagger
- * tags:
- *   - name: Experience
- *     description: Experience-related routes
- */
-
-/**
- * @swagger
- * /api/v1/experience/allExperience:
- *   get:
- *     tags:
- *       - Experience
- *     summary: Simple test route to send a message
- *     responses:
- *       200:
- *         description: Sends a simple "Sent" message
- */
-ExperienceRouter.get("/allExperience", (req, res) => {
-    res.send("Sent");
-});
-
-/**
- * @swagger
  * /api/v1/experience/postExperience:
  *   post:
  *     tags:

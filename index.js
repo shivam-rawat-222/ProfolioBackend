@@ -15,7 +15,7 @@ const { mailRouter } = require("./Router/SendMail");
 const { TokenRouter } = require("./Router/TokenRouter");
 
 const { EducationRouter } = require("./Router/EducationRouter");
-const {AllCertificatesRouter}  = require("./Router/AllCertificates")
+const { AllCertificatesRouter } = require("./Router/AllCertificates")
 app.use(cors());
 
 // Swagger configuration
@@ -66,7 +66,9 @@ app.use(express.json());
 // app.use(tokenAuth);
 app.use("/api/v1/about", AboutRouter);
 app.use("/api/v1/expertise", expertiseRouter);
+app.use("/api/v1/education", EducationRouter);
 app.use("/api/v1/experience", ExperienceRouter);
+app.use("/api/v1/certificates", AllCertificatesRouter);
 app.use("/api/v1/allProjects", AllProjectRouter);
 app.use("/api/v1/Connect", mailRouter);
 app.use("/api/v1/Token", TokenRouter);

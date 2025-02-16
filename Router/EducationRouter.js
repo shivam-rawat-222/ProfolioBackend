@@ -2,29 +2,6 @@ const express = require("express");
 const EducationRouter = express();
 const { EducationModel } = require("../Models/Education");
 
-/**
- * @swagger
- * tags:
- *   - name: Education
- *     description: Education-related routes
- */
-
-/**
- * @swagger
- * /api/v1/Education/allEducation:
- *   get:
- *     tags:
- *       - Education 
- *     summary: Simple test route to send a message
- *     responses:
- *       200:
- *         description: Sends a simple "Sent" message
- */
-EducationRouter.get("/allEducation", async(req, res) => {
-    let allEducation = await EducationModel.find({});
-
-    res.send(allEducation);
-});
 
 /**
  * @swagger
